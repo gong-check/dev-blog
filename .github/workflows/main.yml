@@ -3,20 +3,14 @@ on:
     branches:
       - main
 
-name: build gatsby
 jobs:
-  build_gatsby:
-    name: build
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-
-      - name: npm install
-        run: npm install
+      - uses: actions/checkout@v3
 
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.API_KEY }}
           deploy-branch: gh-pages
-          skip-publish: false
