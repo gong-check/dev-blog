@@ -5,31 +5,28 @@ import ScrollUpButton from "./ScrollUpButton"
 import useScroll from "./hooks/useScroll"
 
 const Layout = ({ location, title, children }) => {
-  const { scrollPosition } = useScroll()
+  const [scrollPosition, setScrollPosition] = useState(0)
   const layoutRef = useRef(null)
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
+
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY)
+  }
 
   const onClickUpScrollPage = () => {
     layoutRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(() => {
+    window.addEventListener("scroll", updateScroll)
     layoutRef.current.scrollIntoView()
   }, [])
-
-  let header
 
   if (isRootPath) {
     header = (
       <>
-        <h1
-          className={
-            !!scrollPosition
-              ? "main-heading main-heading-scroll"
-              : "main-heading"
-          }
-        >
+        <h1 className={!scrollPosition ? "main-heading-top" : "main-heading"}>
           <Link to="/">
             <StaticImage
               className="logo-title"
