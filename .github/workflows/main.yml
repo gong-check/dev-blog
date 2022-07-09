@@ -1,28 +1,23 @@
-name: auto-deploy
-
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
+name: build gatsby
 jobs:
-  deploy:
+  build_gatsby:
+    name: build
     runs-on: ubuntu-latest
 
     steps:
-      # https://github.com/marketplace/actions/checkout
-      - name: 🧑🏻‍💻 checkout source code
-        uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v1
 
-      # https://github.com/marketplace/actions/setup-node-js-environment
-      - name: 😎 Setup Node
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: "12.x"
-
-      - name: 🕸 install dependencies on ubuntu
+      - name: npm install
         run: npm install
 
-      - name: 🏢 build
+      - name: gatsby build
+        env:
+          GH_API_KEY: ${{ secrets.API_KEY }}
         run: npm run build
 
       - name: 👊🏻 deploy
