@@ -1,22 +1,32 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import ScrollUpButton from "./ScrollUpButton"
 
 const Layout = ({ location, title, children }) => {
+  const [scrollPosition, setScrollPosition] = useState(0)
   const layoutRef = useRef(null)
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
 
-  const onClickUpScrollPage = () => {
-    layoutRef.current.scrollIntoView()
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY)
   }
+
+  const onClickUpScrollPage = () => {
+    layoutRef.current.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", updateScroll)
+    layoutRef.current.scrollIntoView()
+  }, [])
 
   if (isRootPath) {
     header = (
       <>
-        <h1 className="main-heading">
+        <h1 className={!scrollPosition ? "main-heading-top" : "main-heading"}>
           <Link to="/">
             <StaticImage
               className="logo-title"
