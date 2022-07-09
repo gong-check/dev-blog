@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "SUIT-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -53,7 +60,6 @@ h1 {
 hr {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
-  overflow: visible; /* 2 */
 }
 
 /**
@@ -62,7 +68,6 @@ hr {
  */
 
 pre {
-  font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -105,7 +110,6 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -114,7 +118,7 @@ samp {
  */
 
 small {
-  font-size: 80%;
+  font-size: 90%;
 }
 
 /**
@@ -175,8 +179,6 @@ textarea {
 
 button,
 input {
-  /* 1 */
-  overflow: visible;
 }
 
 /**
