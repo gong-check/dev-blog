@@ -82,6 +82,7 @@ body {
   font-family: "SUIT-Medium";
   font-size: var(--fontSize-1);
   color: var(--color-text);
+  overflow-x: hidden;
 }
 
 footer {
@@ -246,7 +247,7 @@ a:focus {
 
 .global-wrapper {
   margin-top: 68px;
-  scroll-behavior: smooth;
+  min-width: var(--maxWidth-wrapper);
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
@@ -260,6 +261,7 @@ a:focus {
 
 .post-wrapper {
   margin-top: 68px;
+  width: 100%;
   max-width: var(--maxWidth-wrapper);
 }
 
@@ -281,6 +283,8 @@ a:focus {
 
 .main-section {
   width: 100vw;
+  margin: 0;
+  padding: 0;
   max-height: 550px;
   min-width: 300px;
   display: flex;
@@ -331,8 +335,8 @@ a:focus {
   margin-bottom: var(--spacing-16);
 }
 
-.bio p {
-  margin-bottom: var(--spacing-0);
+.bio div div {
+  color: var(--color-text-light);
 }
 
 .bio-avatar {
@@ -350,8 +354,8 @@ a:focus {
   color: var(--color-text-light);
 }
 
-.blog-post-nav ul {
-  margin: var(--spacing-0);
+.blog-post section {
+  margin-top: 24px;
 }
 
 .gatsby-highlight {
@@ -381,4 +385,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
 }
