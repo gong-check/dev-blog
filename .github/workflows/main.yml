@@ -28,28 +28,4 @@ jobs:
           npm install
       - name: Build
         run: |
-          rm -rf ./public
-          mkdir public
-          cp index.html ./public
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v2
-        with:
-          ref: "gh-pages"
-          clean: false
-      - name: Copy Directories
-        run: |
-          rm -rf ./build
-          cp -r ./public ./build
-      - name: Add & Commit
-        uses: EndBug/add-and-commit@v4.4.0
-        with:
-          add: "build"
-          ref: "gh-pages"
-        env:
-          GITHUB_TOKEN: ${{ secrets.API_KEY }}
-      - name: Push commit
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.API_KEY }}
-          branch: "gh-pages"
-          force: true
+          npm run deploy
