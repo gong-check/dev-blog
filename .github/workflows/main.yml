@@ -12,14 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: npm install
-        run: npm install
-
-      - name: gatsby build
-        env:
-          GH_API_KEY: ${{ secrets.API_KEY }}
-        run: npm run build
-
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.API_KEY }}
