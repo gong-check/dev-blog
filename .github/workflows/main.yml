@@ -1,0 +1,55 @@
+name: auto deploy
+
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+      - name: npm install
+        run: |
+          npm install
+      - name: Build
+        run: |
+          rm -rf ./public
+          mkdir public
+          cp index.html ./public
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: "gh-pages"
+          clean: false
+      - name: Copy Directories
+        run: |
+          rm -rf ./build
+          cp -r ./public ./build
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v4.4.0
+        with:
+          add: "build"
+          ref: "gh-pages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_KEY }}
+      - name: Push commit
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.API_KEY }}
+          branch: "gh-pages"
+          force: true
