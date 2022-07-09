@@ -27,12 +27,12 @@
     "gatsby-transformer-sharp": "^4.18.0",
     "gh-pages": "^4.0.0",
     "prismjs": "^1.28.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.4.0",
-    "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75"
+    "typeface-merriweather": "1.1.13",
+    "typeface-montserrat": "1.1.13"
   },
   "devDependencies": {
     "prettier": "^2.7.1"
