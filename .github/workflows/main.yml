@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - main
+
 name: build gatsby
 jobs:
   build_gatsby:
@@ -22,4 +23,4 @@ jobs:
         uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.API_KEY }}
-          deploy-branch: main
+          deploy-branch: gh-pages
