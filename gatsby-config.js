@@ -21,7 +21,7 @@ module.exports = {
         // If you'd like to not use gatsby-remark-images and just copy your
         // original images to the public directory, set
         // `ignoreFileExtensions` to an empty array.
-        destinationDir: "babydragon",
+        destinationDir: `${module.exports.pathPrefix}`,
         ignoreFileExtensions: [],
       },
     },
