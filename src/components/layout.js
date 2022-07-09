@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import ScrollUpButton from "./ScrollUpButton"
-import useScroll from "./hooks/useScroll"
 
 const Layout = ({ location, title, children }) => {
   const [scrollPosition, setScrollPosition] = useState(0)
