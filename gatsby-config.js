@@ -4,6 +4,10 @@ module.exports = {
     title: `공책 팀 개발 블로그`,
     description: `함께쓰는 우리의 공간, 우리가 체크하자!`,
     siteUrl: `https://gong-check.github.io/dev-blog/`,
+    author: {
+      name: "공책(GongCheck)",
+      summary: `우아한테크코스 4기`,
+    },
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -107,15 +111,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `GongCheck Tech Blog`,
+        short_name: `GongCheck`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gongcheck-icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-react-helmet`,

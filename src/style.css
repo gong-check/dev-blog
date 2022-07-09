@@ -334,6 +334,7 @@ a:focus {
 }
 
 .bio-avatar {
+  margin-right: 16px;
   border-radius: 100%;
 }
 
