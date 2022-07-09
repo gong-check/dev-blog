@@ -28,7 +28,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <h1 itemProp="headline">
               {post.frontmatter.title || postInfo.title}
             </h1>
-            <p>{post.frontmatter.date || "작성 날짜 없음"}</p>
+            <div>{post.frontmatter.date || "작성 날짜 없음"}</div>
           </header>
           <section
             dangerouslySetInnerHTML={{ __html: post.html }}
