@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: npm install
+        run: npm install
+
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.API_KEY }}
