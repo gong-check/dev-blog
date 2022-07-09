@@ -1,16 +1,9 @@
 module.exports = {
   pathPrefix: `/dev-blog`,
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    title: `공책 팀 개발 블로그`,
+    description: `함께쓰는 우리의 공간, 우리가 체크하자!`,
+    siteUrl: `https://gong-check.github.io/dev-blog/`,
   },
   plugins: [
     `gatsby-plugin-image`,
