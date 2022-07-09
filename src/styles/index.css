@@ -1,0 +1,7 @@
+/* normalize CSS across browsers */
+@import "normalize.css";
+/* custom CSS styles */
+@import "style.css";
+
+/* components */
+@import "scroll-up-button.css";

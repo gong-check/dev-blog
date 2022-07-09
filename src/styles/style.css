@@ -60,6 +60,7 @@
   --color-heading: #333d4b;
   --color-heading-black: #333d4b;
   --color-accent: #d1dce5;
+  --color-first: #68c1f8;
 }
 
 /* HTML elements */
@@ -245,6 +246,7 @@ a:focus {
 
 .global-wrapper {
   margin-top: 68px;
+  scroll-behavior: smooth;
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
