@@ -25,7 +25,7 @@ module.exports = {
         ignoreFileExtensions: [],
       },
     },
-    `gatsby-plugin-ima,ge`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
