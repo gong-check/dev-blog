@@ -1,14 +1,7 @@
 on:
-  pull_request:
-    branches:
-      - main
-    paths-ignore:
-      - "**/README.md"
   push:
     branches:
       - main
-    paths-ignore:
-      - "**/README.md"
 
 name: build gatsby
 jobs:
@@ -21,11 +14,6 @@ jobs:
 
       - name: yarn install
         run: yarn install
-
-      - name: gatsby build
-        env:
-          GH_API_KEY: ${{ secrets.API_KEY }}
-        run: yarn build
 
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
