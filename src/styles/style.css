@@ -276,6 +276,7 @@ a:focus {
   height: 68px;
   line-height: -60px;
   z-index: 1;
+  transition: all 0.2s;
 }
 
 .main-heading-scroll {
