@@ -246,7 +246,6 @@ a:focus {
 /* Custom classes */
 
 .global-wrapper {
-  margin-top: 68px;
   min-width: var(--maxWidth-wrapper);
 }
 
@@ -261,7 +260,7 @@ a:focus {
 }
 
 .post-wrapper {
-  margin-top: 68px;
+  margin-top: 136px;
   width: 100%;
   max-width: var(--maxWidth-wrapper);
 }
@@ -269,17 +268,20 @@ a:focus {
 .main-heading {
   font-size: var(--fontSize-2);
   padding: 16px 48px;
-  color: black;
   margin: 0;
-  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 68px;
   line-height: -60px;
-  border-bottom: 1px solid #e6e8ea;
   z-index: 1;
+}
+
+.main-heading-scroll {
+  transition: all 0.5s;
+  background-color: #fff;
+  border-bottom: 1px solid #e6e8ea;
 }
 
 .main-section {
