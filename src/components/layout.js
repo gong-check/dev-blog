@@ -26,6 +26,7 @@ const Layout = ({ location, title, children }) => {
             <StaticImage
               className="main-cover"
               src="../images/main-cover.png"
+              alt="Main cover picture"
             />
           </div>
         </section>

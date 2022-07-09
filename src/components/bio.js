@@ -14,10 +14,10 @@ const Bio = () => {
         quality={95}
         alt="Profile picture"
       />
-      <p>
+      <div>
         <strong>공책(GongCheck)</strong>
-        <p>우아한테크코스 4기</p>
-      </p>
+        <div>우아한테크코스 4기</div>
+      </div>
     </div>
   )
 }
