@@ -12,10 +12,6 @@ const BlogPostTemplate = ({ data, location }) => {
   const slug = data.markdownRemark.fields.slug
   const postInfo = getInfoFromSlug(slug)
 
-  console.log(siteTitle)
-  console.log(postInfo.title)
-  console.log(post.frontmatter)
-  console.log(post.frontmatter.title || postInfo.title)
   return (
     <Layout location={location} title={siteTitle}>
       <Seo

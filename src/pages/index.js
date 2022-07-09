@@ -13,7 +13,7 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <Seo title="GongCheck" />
-        <p>작성된 게시글이 존재하지 않습니다.</p>
+        <div className="no-posts">작성된 게시글이 존재하지 않습니다.</div>
       </Layout>
     )
   }

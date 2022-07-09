@@ -392,3 +392,8 @@ main {
   justify-content: space-between;
   height: 32px;
 }
+
+.no-posts {
+  margin-top: 240px;
+  font-size: var(--fontSize-4);
+}
