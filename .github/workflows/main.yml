@@ -1,27 +1,39 @@
+name: auto-deploy
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
-name: build gatsby
 jobs:
-  build_gatsby:
-    name: build
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      # https://github.com/marketplace/actions/checkout
+      - name: 🧑🏻‍💻 checkout source code
+        uses: actions/checkout@v2.3.4
 
-      - name: npm install
-        run: npm install
-
-      - name: gatsby build
-        env:
-          GH_API_KEY: ${{ secrets.API_KEY }}
-        run: npm run build
-
-      - uses: enriikke/gatsby-gh-pages-action@v2
+      # https://github.com/marketplace/actions/setup-node-js-environment
+      - name: 😎 Setup Node
+        uses: actions/setup-node@v2.1.2
         with:
-          access-token: ${{ secrets.API_KEY }}
-          deploy-branch: gh-pages
-          skip-publish: false
+          node-version: "12.x"
+
+      # https://github.com/marketplace/actions/yarn-install-cache
+      - name: 🚀 yarn cache
+        uses: c-hive/gha-yarn-cache@v2
+
+      - name: 🕸 install dependencies on ubuntu
+        run: yarn install
+
+      - name: 🏢 build
+        run: yarn build
+
+      - name: 👊🏻 deploy
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          email: hello@business-canvas.com
+          build_dir: public
+          branch: main
