@@ -1,11 +1,17 @@
-import * as React from "react"
+import React, { useRef } from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import ScrollUpButton from "./ScrollUpButton"
 
 const Layout = ({ location, title, children }) => {
+  const layoutRef = useRef(null)
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
+
+  const onClickUpScrollPage = () => {
+    layoutRef.current.scrollIntoView()
+  }
 
   if (isRootPath) {
     header = (
@@ -26,6 +32,7 @@ const Layout = ({ location, title, children }) => {
             <StaticImage
               className="main-cover"
               src="../images/main-cover.png"
+              alt="Main Cover"
             />
           </div>
         </section>
@@ -48,9 +55,14 @@ const Layout = ({ location, title, children }) => {
   }
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
+    <div
+      className="global-wrapper"
+      data-is-root-path={isRootPath}
+      ref={layoutRef}
+    >
       <header>{header}</header>
       <main>{children}</main>
+      <ScrollUpButton onClick={onClickUpScrollPage} />
     </div>
   )
 }
