@@ -18,12 +18,10 @@ jobs:
       - name: gatsby build
         env:
           GH_API_KEY: ${{ secrets.API_KEY }}
-        run: npm run build
+        run: gatsby build --prefix-paths
 
-      - name: 👊🏻 deploy
-        uses: Cecilapp/GitHub-Pages-deploy@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.API_KEY }}
+      - uses: enriikke/gatsby-gh-pages-action@v2
         with:
-          build_dir: public
-          branch: main
+          access-token: ${{ secrets.API_KEY }}
+          deploy-branch: gh-pages
+          skip-publish: false
