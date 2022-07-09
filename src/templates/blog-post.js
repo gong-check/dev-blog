@@ -1,14 +1,16 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import getInfoFromSlug from "../utils/getInfoFromSlug"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  console.log(post)
+  const slug = data.markdownRemark.fields.slug
+  const postInfo = getInfoFromSlug(slug)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -32,7 +34,7 @@ const BlogPostTemplate = ({ data, location }) => {
           />
           <hr />
           <footer>
-            <Bio />
+            <Bio name={postInfo.author} />
           </footer>
         </article>
       </div>
@@ -43,11 +45,7 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
+  query BlogPostBySlug($id: String!) {
     site {
       siteMetadata {
         title
@@ -57,27 +55,14 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "YYYY.MM.DD")
         description
         tags
-      }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
       }
     }
   }

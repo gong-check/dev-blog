@@ -329,8 +329,8 @@ a:focus {
   margin-bottom: var(--spacing-16);
 }
 
-.bio p {
-  margin-bottom: var(--spacing-0);
+.bio div div {
+  color: var(--color-text-light);
 }
 
 .bio-avatar {
@@ -348,8 +348,8 @@ a:focus {
   color: var(--color-text-light);
 }
 
-.blog-post-nav ul {
-  margin: var(--spacing-0);
+.blog-post section {
+  margin-top: 24px;
 }
 
 .gatsby-highlight {
@@ -379,4 +379,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
 }

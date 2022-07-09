@@ -1,7 +1,8 @@
 ---
-title: Hello World
-date: "2015-05-01T22:12:03.284Z"
-description: "Hello World"
+title: 테스트용 게시물
+date: 2022-05-01
+description: Hello Worlddd
+tags: [1, 2, 3]
 ---
 
 This is my first post on my new fake blog! How exciting!

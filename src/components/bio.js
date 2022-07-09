@@ -1,7 +1,7 @@
 import * as React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
-const Bio = () => {
+const Bio = ({ name }) => {
   return (
     <div className="bio">
       <StaticImage
@@ -15,7 +15,7 @@ const Bio = () => {
         alt="Profile picture"
       />
       <div>
-        <strong>공책(GongCheck)</strong>
+        <strong>{name}</strong>
         <div>우아한테크코스 4기</div>
       </div>
     </div>
