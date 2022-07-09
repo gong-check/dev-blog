@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import getInfoFromSlug from "../utils/getInfoFromSlug"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -23,7 +24,8 @@ const BlogIndex = ({ data, location }) => {
       <div className="list-wrapper">
         <ol style={{ listStyle: `none` }}>
           {posts.map(post => {
-            const title = post.frontmatter.title || post.fields.slug
+            const postInfo = getInfoFromSlug(post.fields.slug)
+            const title = post.frontmatter.title || postInfo.title
 
             return (
               <li key={post.fields.slug}>
@@ -47,7 +49,7 @@ const BlogIndex = ({ data, location }) => {
                       itemProp="description"
                     />
                   </section>
-                  <small>{post.frontmatter.date}</small>
+                  <small>{post.frontmatter.date || "작성 날짜 없음"}</small>
                 </article>
               </li>
             )

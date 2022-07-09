@@ -8,10 +8,14 @@ import getInfoFromSlug from "../utils/getInfoFromSlug"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const siteTitle = data.site.siteMetadata?.title || `공책 팀 개발 블로그`
   const slug = data.markdownRemark.fields.slug
   const postInfo = getInfoFromSlug(slug)
 
+  console.log(siteTitle)
+  console.log(postInfo.title)
+  console.log(post.frontmatter)
+  console.log(post.frontmatter.title || postInfo.title)
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
@@ -25,8 +29,10 @@ const BlogPostTemplate = ({ data, location }) => {
           itemType="http://schema.org/Article"
         >
           <header>
-            <h1 itemProp="headline">{post.frontmatter.title}</h1>
-            <p>{post.frontmatter.date}</p>
+            <h1 itemProp="headline">
+              {post.frontmatter.title || postInfo.title}
+            </h1>
+            <p>{post.frontmatter.date || "작성 날짜 없음"}</p>
           </header>
           <section
             dangerouslySetInnerHTML={{ __html: post.html }}
