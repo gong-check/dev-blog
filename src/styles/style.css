@@ -256,6 +256,7 @@ a:focus {
 
 .list-wrapper {
   margin-top: 48px;
+  width: 100%;
   max-width: var(--maxWidth-wrapper);
 }
 
