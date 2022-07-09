@@ -18,7 +18,7 @@ jobs:
       - name: gatsby build
         env:
           GH_API_KEY: ${{ secrets.API_KEY }}
-        run: gatsby build --prefix-paths
+        run: npm run build
 
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
