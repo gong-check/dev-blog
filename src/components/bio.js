@@ -1,22 +1,22 @@
 import * as React from "react"
-import { StaticImage } from "gatsby-plugin-image"
+import getTeamInfo from "../utils/getTeamInfo"
 
 const Bio = ({ name }) => {
+  const { img, division } = getTeamInfo(name)
+
   return (
     <div className="bio">
-      <StaticImage
+      <img
         className="bio-avatar"
-        layout="fixed"
-        formats={["auto", "webp", "avif"]}
-        src="../images/profile-pic.png"
+        src={img}
         width={50}
         height={50}
-        quality={95}
-        alt="Profile picture"
+        alt="profile"
       />
+
       <div>
         <strong>{name}</strong>
-        <div>우아한테크코스 4기</div>
+        <div>우아한테크코스 4기 {division}</div>
       </div>
     </div>
   )
