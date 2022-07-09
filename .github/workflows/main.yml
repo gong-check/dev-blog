@@ -23,4 +23,3 @@ jobs:
         with:
           access-token: ${{ secrets.API_KEY }}
           deploy-branch: main
-          deploy-repo: ./public'
