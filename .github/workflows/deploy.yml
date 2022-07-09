@@ -1,28 +1,16 @@
-name: Deployment
-on: [push, pull_request]
+name: Gatsby Publish
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@master
-
-      - name: Set up Node
-        uses: actions/setup-node@master
+      - uses: actions/checkout@v1
+      - uses: enriikke/gatsby-gh-pages-action@v2
         with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-        env:
-          CI: false
-          NODE_ENV: production
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.API_KEY}}
-          publish_dir: ./public
+          access-token: ${{ secrets.API_KEY }}
+					deploy-branch: gh-pages
