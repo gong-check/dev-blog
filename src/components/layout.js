@@ -75,6 +75,7 @@ const Layout = ({ location, title, children }) => {
     >
       <header>{header}</header>
       <main>{children}</main>
+      <footer></footer>
       <ScrollUpButton onClick={onClickUpScrollPage} />
     </div>
   )

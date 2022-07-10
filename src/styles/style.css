@@ -99,13 +99,20 @@ hr {
 
 h1,
 h2,
-h3,
+h3 {
+  font-family: "SUIT-Medium";
+  margin-top: var(--spacing-8);
+  margin-bottom: var(--spacing-6);
+  line-height: var(--lineHeight-tight);
+  letter-spacing: -0.025em;
+}
+
 h4,
 h5,
 h6 {
   font-family: "SUIT-Medium";
-  margin-top: var(--spacing-12);
-  margin-bottom: var(--spacing-6);
+  margin-top: var(--spacing-6);
+  margin-bottom: var(--spacing-4);
   line-height: var(--lineHeight-tight);
   letter-spacing: -0.025em;
 }
@@ -129,6 +136,10 @@ h2 a span {
   font-weight: 800;
   font-size: var(--fontSize-6);
   color: #333d4b;
+}
+
+h2 {
+  font-size: var(--fontSize-5);
 }
 
 h3 {
@@ -173,10 +184,8 @@ p {
 
 ul,
 ol {
-  margin-top: 48px;
-  margin-left: var(--spacing-0);
-  margin-right: var(--spacing-0);
-  padding: var(--spacing-0);
+  margin-top: 24px;
+  padding: 0 var(--spacing-5);
   margin-bottom: var(--spacing-8);
   list-style-position: outside;
   list-style-image: none;
@@ -184,8 +193,7 @@ ol {
 
 ul li,
 ol li {
-  padding-left: var(--spacing-0);
-  margin-bottom: 80px;
+  margin-bottom: 8px;
 }
 
 li > p {
@@ -197,19 +205,19 @@ li *:last-child {
 }
 
 li > ul {
-  margin-left: var(--spacing-8);
   margin-top: calc(var(--spacing-8) / 2);
 }
 
 blockquote {
-  color: var(--color-text-light);
-  margin-left: calc(-1 * var(--spacing-6));
-  margin-right: var(--spacing-8);
-  padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6);
-  border-left: var(--spacing-1) solid var(--color-primary);
+  color: var(--color-text);
+  margin-left: calc(-1 * var(--spacing-2));
+  margin-right: calc(-1 * var(--spacing-2));
+  padding: var(--spacing-2) var(--spacing-0) var(--spacing-2) var(--spacing-2);
+  border-left: var(--spacing-1) solid #68c1f8;
   font-size: var(--fontSize-2);
   font-style: italic;
   margin-bottom: var(--spacing-8);
+  background-color: #68c1f820;
 }
 
 blockquote > :last-child {
@@ -254,7 +262,7 @@ a:focus {
 }
 
 .list-wrapper {
-  margin-top: 48px;
+  margin: 48px 0;
   width: 100%;
   max-width: var(--maxWidth-wrapper);
 }
@@ -351,6 +359,11 @@ a:focus {
   color: var(--color-text-light);
 }
 
+.bio strong {
+  margin-top: 4px;
+  font-size: var(--fontSize-2);
+}
+
 .bio-avatar {
   margin-right: 16px;
   border-radius: 100%;
@@ -408,4 +421,10 @@ main {
 .no-posts {
   margin: 240px 0;
   font-size: var(--fontSize-4);
+}
+
+.footer-division {
+  margin-top: var(--spacing-16);
+  height: 2px;
+  box-shadow: 0 2px 1px 0px #b2bec3;
 }

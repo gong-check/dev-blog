@@ -34,7 +34,7 @@ const BlogPostTemplate = ({ data, location }) => {
             dangerouslySetInnerHTML={{ __html: post.html }}
             itemProp="articleBody"
           />
-          <hr />
+          <div className="footer-division" />
           <footer>
             <Bio name={postInfo.author} />
           </footer>
