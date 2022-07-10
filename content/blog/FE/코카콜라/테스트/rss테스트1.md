@@ -1,6 +1,6 @@
 ---
-date: "2022-07-10T20:10:00"
-title: 테스트용 게시물10 2022-07-10T20:10:00 테스트
+date: 2022-07-10T17:00
+title: 테스트용 게시물 2022-07-10T17:00
 description: 이 게시물은 테스트용 게시물입니당
 tags: ["javascript", "java", "react", "spring"]
 ---
