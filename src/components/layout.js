@@ -22,10 +22,14 @@ const Layout = ({ location, title, children }) => {
     layoutRef.current.scrollIntoView()
   }, [])
 
+  let header
+
   if (isRootPath) {
     header = (
       <>
-        <h1 className={!scrollPosition ? "main-heading-top" : "main-heading"}>
+        <h1
+          className={scrollPosition < 24 ? "main-heading-top" : "main-heading"}
+        >
           <Link to="/">
             <StaticImage
               className="logo-title"
