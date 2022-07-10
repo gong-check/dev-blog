@@ -73,13 +73,13 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  custom_elements: [{ "content:encoded": edge.node.html }],
                 })
               })
             },
@@ -88,16 +88,15 @@ module.exports = {
                 allMarkdownRemark(
                   sort: { order: DESC, fields: [frontmatter___date] },
                 ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                      tags
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                      }
                     }
                   }
                 }
@@ -107,6 +106,45 @@ module.exports = {
             title: "Gong Check Team Tech Blog RSS Feed",
           },
         ],
+        //   feeds: [
+        //     {
+        //       serialize: ({ query: { site, allMarkdownRemark } }) => {
+        //         return allMarkdownRemark.nodes.map(node => {
+        //           return Object.assign({}, node.frontmatter, {
+        //             description: node.excerpt,
+        //             date: node.frontmatter.date,
+        //             url: site.siteMetadata.siteUrl + node.fields.slug,
+        //             guid: site.siteMetadata.siteUrl + node.fields.slug,
+        //             custom_elements: [{ "content:encoded": node.html }],
+        //           })
+        //         })
+        //       },
+        //       query: `
+        //         {
+        //           allMarkdownRemark(
+        //             sort: { order: DESC, fields: [frontmatter___date] },
+        //           ) {
+        //             nodes {
+        //               excerpt
+        //               html
+        //               fields {
+        //                 slug
+        //               }
+        //               frontmatter {
+        //                 title
+        //                 date
+        //                 tags
+        //               }
+        //             }
+        //           }
+        //         }
+        //       `,
+        //       output: "/rss.xml",
+        //       title: "Gong Check Team Tech Blog RSS Feed",
+        //       match: "^/blog/",
+        //       link: "https://gong-check.github.io/dev-blog/",
+        //     },
+        //   ],
       },
     },
     {
