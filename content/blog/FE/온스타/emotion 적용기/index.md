@@ -1,5 +1,5 @@
 ---
-date: 2022-07-11
+date: 2022-07-11T12:10
 title: 프로젝트에 Emotion 적용기
 description: 프로젝트에 Emotion을 적용한 이유와 그 과정에 대한 회고와 내용 정리
 tags: ["react", "fe", "emotion"]
