@@ -104,7 +104,7 @@ module.exports = {
                 }
               `,
             output: "/rss.xml",
-            title: "GongCheck Team Tech Blog RSS Feed",
+            title: "GongCheck Tech Blog RSS Feed",
             match: "^/blog/",
             link: "https://gong-check.github.io/dev-blog/",
           },
