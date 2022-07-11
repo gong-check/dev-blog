@@ -2,23 +2,19 @@ import React, { useEffect, useRef, useState } from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import ScrollUpButton from "./ScrollUpButton"
+import useScroll from "../hooks/useScroll"
 
 const Layout = ({ location, title, children }) => {
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const { scrollPosition } = useScroll()
   const layoutRef = useRef(null)
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-
-  const updateScroll = () => {
-    setScrollPosition(window.scrollY)
-  }
 
   const onClickUpScrollPage = () => {
     layoutRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", updateScroll)
     layoutRef.current.scrollIntoView()
   }, [])
 
