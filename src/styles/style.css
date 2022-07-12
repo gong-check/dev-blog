@@ -180,6 +180,7 @@ p {
   --x-height-multiplier: 0.35;
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0);
   padding: var(--spacing-0);
+  word-wrap: break-word;
 }
 
 ul,
@@ -218,6 +219,10 @@ blockquote {
   font-style: italic;
   margin-bottom: var(--spacing-8);
   background-color: #68c1f820;
+  word-wrap: break-word;
+}
+.language-text {
+  word-wrap: break-word !important;
 }
 
 blockquote > :last-child {
