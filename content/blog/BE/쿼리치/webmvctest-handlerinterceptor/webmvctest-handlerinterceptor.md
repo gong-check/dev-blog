@@ -1,11 +1,13 @@
 ---
-date: 2022-07-11T12:00
-title: '@WebMvcTest 에서 HandlerInterceptor 를 자동으로 빈 등록해줄까?'
-description: 개발자란? 그리고 우리가 해결해야 할 문제
+date: 2022-07-11T22:00
+title: 'WebMvcTest 와 HandlerInterceptor'
+description: '@WebMvcTest 에서 HandlerInterceptor 를 자동으로 빈 등록해줄까?'
 tags: ["backend", "WebMvcTest", "HandlerInterceptor"]
 ---
 
 ### 개요
+
+---
 
 안녕하세요 공책팀에서 백엔드 개발을 맡고 있는 쿼리치입니다.
 
@@ -13,7 +15,11 @@ tags: ["backend", "WebMvcTest", "HandlerInterceptor"]
 
 이번 글을 통해 1차 스프린트 진행 중 마주치게 된 한 상황에 대해 기록해보고자 합니다.
 
+<br>
+
 ### @WebMvcTest 사용 중…
+
+---
 
 Presentation Layer 를 테스트하기 위해 우린 흔히 `@WebMvcTest` 를 사용합니다.
 
@@ -47,7 +53,11 @@ Presentation Layer 를 테스트하기 위해 우린 흔히 `@WebMvcTest` 를 �
 > 분명 `WebMvcConfigurer` 랑 `HandlerMethodArgumentResolver` 는 자동으로 등록해준다고 공식 문서에 명시되어 있는데, `HandlerInterceptor` 는 없네? 근데 따로 등록해주지 않아도 작동하네? 왜지?
 > 
 
+<br>
+
 ### 찾아보자.
+
+---
 
 > *The `WebMvcTypeExcludeFilter` (for `@WebMvcTest` test slice) is missing the `org.springframework.web.servlet.HandlerInterceptor` interface from its default includes in my opinion.*
 > 
@@ -67,7 +77,11 @@ Presentation Layer 를 테스트하기 위해 우린 흔히 `@WebMvcTest` 를 �
 
 이로써 `@WebMvcTest` 수행 시 `HandlerInterceptor` 가 자동으로 빈 등록된다는 것을 알 수 있습니다.
 
+<br>
+
 ### 그렇다면 왜 공식 문서에는 해당 내용이 반영되지 않은 것일까?
+
+---
 
 <div align="center">
 	<img src="webmvctest-handlerinterceptor/official-docs.png"/>
@@ -82,6 +96,10 @@ Presentation Layer 를 테스트하기 위해 우린 흔히 `@WebMvcTest` 를 �
 > *• `@WebMvcTest` now scans `HandlerInterceptor` beans.*
 > 
 
+<br>
+
 ### 결론
+
+---
 
 이번 사건을 통해 버전 확인에 대한 중요성을 알 수 있었고 공식 문서에 아직 반영되지 않은 기능들이 있을 수 있기 때문에 spring-boot GitHub 의 Release Note 를 잘 활용한다면 원하는 정보를 공식적으로 찾을 수 있다는 것을 알 수 있었습니다.
