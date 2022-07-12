@@ -274,8 +274,13 @@ a:focus {
 
 .post-wrapper {
   margin-top: 136px;
-  width: 100%;
   max-width: var(--maxWidth-wrapper);
+}
+
+@media (max-width: 42rem) {
+  .post-wrapper {
+    max-width: 100vw;
+  }
 }
 
 .main-heading-top {
