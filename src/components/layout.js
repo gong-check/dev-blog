@@ -36,8 +36,8 @@ const Layout = ({ location, title, children }) => {
             />
           </Link>
         </h1>
-        <section>
-          <div className="main-section">
+        <section className="main-section">
+          <div className="main-section-image-wrapper">
             <StaticImage
               className="main-cover"
               src="../images/main-cover.png"
@@ -70,7 +70,7 @@ const Layout = ({ location, title, children }) => {
       ref={layoutRef}
     >
       <header>{header}</header>
-      <main>{children}</main>
+      <main className="content-wrapper">{children}</main>
       <footer></footer>
       <ScrollUpButton onClick={onClickUpScrollPage} />
     </div>

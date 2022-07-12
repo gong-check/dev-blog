@@ -253,12 +253,13 @@ a:focus {
 
 /* Custom classes */
 
-.global-wrapper {
-  min-width: var(--maxWidth-wrapper);
-}
-
 .global-wrapper[data-is-root-path="true"] .bio {
   margin-bottom: var(--spacing-20);
+}
+
+.content-wrapper {
+  max-width: var(--maxWidth-wrapper);
+  margin: 0 auto;
 }
 
 .list-wrapper {
@@ -306,14 +307,19 @@ a:focus {
 }
 
 .main-section {
-  width: 100vw;
+  width: 100%;
+  max-height: 550px;
+  min-width: 300px;
+}
+
+.main-section-image-wrapper {
+  width: 100%;
   margin: 0;
   padding: 0;
   max-height: 550px;
   min-width: 300px;
   display: flex;
   justify-content: center;
-  background-color: #121212;
 }
 
 .main-cover {
