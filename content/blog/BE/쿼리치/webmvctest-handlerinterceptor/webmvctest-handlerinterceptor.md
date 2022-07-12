@@ -59,7 +59,9 @@ Presentation Layer 를 테스트하기 위해 우린 흔히 `@WebMvcTest` 를 �
 
 해당 이슈는 [위 PR](https://github.com/spring-projects/spring-boot/pull/17600) 을 통해 수정되게 되는데요. [어떤 코드들이 추가](https://github.com/spring-projects/spring-boot/commit/9f69b61d493c29ff5026bbbee306d507d60a0eac)되었는지 확인해봅시다.
 
-![Screen Shot 2022-07-12 at 5.01.07 PM.png](@WebMvcTest%20%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5%20HandlerInterceptor%20%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%205592be5fd4a64c78a070a1bdf31edf65/Screen_Shot_2022-07-12_at_5.01.07_PM.png)
+<div align="center">
+	<img src="webmvctest-handlerinterceptor/code-changes.png"/>
+</div>
 
 위 커밋을 보면 `HandlerInterceptor` 가 추가된 것을 알 수 있습니다.
 
@@ -67,7 +69,9 @@ Presentation Layer 를 테스트하기 위해 우린 흔히 `@WebMvcTest` 를 �
 
 ### 그렇다면 왜 공식 문서에는 해당 내용이 반영되지 않은 것일까?
 
-![Screen Shot 2022-07-12 at 5.03.00 PM.png](@WebMvcTest%20%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5%20HandlerInterceptor%20%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%205592be5fd4a64c78a070a1bdf31edf65/Screen_Shot_2022-07-12_at_5.03.00_PM.png)
+<div align="center">
+	<img src="webmvctest-handlerinterceptor/official-docs.png"/>
+</div>
 
 해당 공식문서는 spring-boot 1.4.0 버전에 작성된 글인 반면, 위 PR 은 2.2.0 단계에서 적용되었기 때문에 아직 공식 문서에 반영되지 않은 것으로 판단됩니다.
 
