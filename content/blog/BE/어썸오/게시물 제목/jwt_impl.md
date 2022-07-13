@@ -2,7 +2,7 @@
 date: 2022-07-11
 title: JWT 기반 인증, 인가 구현기
 description: 스프링 프로젝트에서 JWT 기반 인증을 구현하는 방법을 다룹니다.
-tags: ["spring", "JWT"] \
+tags: ["spring", "JWT"]
 ---
 
 안녕하세요. 공책 팀의 어썸오입니다.
