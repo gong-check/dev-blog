@@ -280,6 +280,7 @@ a:focus {
 .post-wrapper {
   margin-top: 136px;
   max-width: var(--maxWidth-wrapper);
+  padding: 0 16px;
 }
 
 @media (max-width: 42rem) {
