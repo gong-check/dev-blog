@@ -190,6 +190,7 @@ ol {
   margin-bottom: var(--spacing-8);
   list-style-position: outside;
   list-style-image: none;
+  word-wrap: break-word;
 }
 
 ul li,
