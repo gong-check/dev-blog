@@ -1,5 +1,7 @@
 ---
-date: 2022-07-11 title: OAuth 2.0 흐름 description: Github Oauth를 통해 알아보는 OAuth 2.0의 흐름
+date: 2022-07-11  
+title: OAuth 2.0 흐름  
+description: Github Oauth를 통해 알아보는 OAuth 2.0의 흐름  
 tags: ["OAuth 2.0", "Github OAuth"]
 ---
 
