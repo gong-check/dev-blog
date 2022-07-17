@@ -16,11 +16,11 @@ tags: ["OAuth 2.0", "Github OAuth"]
 ---
 회원가입 혹은 로그인 하실 때 아래와 같은 버튼을 통해 진행하신 경험이 있으신가요?
 
+![img_2.png](img_2.png)
+
 아마 다들 경험 해보셨을거라고 생각합니다.
 
 그렇다면 여러분들은 이미 OAuth를 사용하고 있습니다!
-
-![img_2.png](img_2.png)
 
 OAuth 2.0 공식 문서인 `RFC 6749`에는 다음과 같이 OAuth를 정의하고 있습니다.
 
@@ -72,7 +72,7 @@ OAuth의 흐름은 앞서 정의한 4개의 역할의 상호작용으로 이루�
 
 너무 복잡하다 보니 아직 위의 흐름만 봐선 OAuth의 인증 흐름이 와닿지 않으실 수 있습니다. (제가 그랬습니다..)
 
-저희 프로젝트에서 구현한 Github Oauth를 통한 구체적인 예시를 들어보겠습니다.
+Github Oauth를 통해 구체적인 예시를 들어보겠습니다.
 
 ## Github OAuth
 
@@ -161,7 +161,7 @@ Github에서 제공하는 사용자 Profile api의 형식은 아래와 같습니
 ```
 GET https://api.github.com/user
 
-Authorization : Bearer "access_token"
+"Authorization" : "Bearer access_token"
 ```
 
 올바른 Access Token 이라면 Github는 사용자 Profile을 응답합니다.
