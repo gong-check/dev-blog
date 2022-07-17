@@ -1,5 +1,5 @@
 ---
-date: 2022-07-16T12:00 title: 'Oauth 2.0을 알아보자' description: 'Github Oauth를 통해 알아보는 OAuth 2.0'
+date: 2022-07-16T12:00 title: 'Oauth 2.0의 흐름' description: 'Github Oauth를 통해 알아보는 OAuth 2.0'
 tags: ["OAuth 2.0", "Github OAuth"]
 ---
 
