@@ -1,11 +1,11 @@
 ---
 date: 2022-07-11T22:00
-title: 'WebMvcTest 와 HandlerInterceptor'
-description: '@WebMvcTest 에서 HandlerInterceptor 를 자동으로 빈 등록해줄까?'
+title: 'WebMvcTest 사용 시 HandlerInterceptor 빈 등록해야 할까?'
+description: '@WebMvcTest 는 HandlerInterceptor 를 자동으로 빈 등록해줄까?'
 tags: ["backend", "WebMvcTest", "HandlerInterceptor"]
 ---
 
-### 개요
+## 개요
 
 ---
 
@@ -17,7 +17,7 @@ tags: ["backend", "WebMvcTest", "HandlerInterceptor"]
 
 <br>
 
-### @WebMvcTest 사용 중…
+## @WebMvcTest 사용 중..
 
 ---
 
@@ -27,8 +27,7 @@ Presentation Layer 를 테스트하기 위해 우린 흔히 `@WebMvcTest` 를 �
 
 이러한 이유 때문에 저희 공책팀 역시 `@WebMvcTest` 를 사용했습니다.
 
-> *Using this annotation will disable full auto-configuration and instead apply only configuration relevant to MVC tests (i.e. `@Controller`, `@ControllerAdvice`, `@JsonComponent`, `Converter/GenericConverter`, `Filter`, `WebMvcConfigurer` and `HandlerMethodArgumentResolver` beans but not `@Component`, `@Service` or `@Repository` beans).*
-> 
+![Screen Shot 2022-07-12 at 5.03.00 PM.png](webmvctest-handlerinterceptor/Screen_Shot_2022-07-12_at_5.03.00_PM.png)
 
 공식 문서를 찾아보면, 해당 어노테이션을 사용할 때 Auto-Configuration 을 비활성화하고 MVC 테스트에 필요한 컴포넌트만 등록해준다고 합니다. 이는 아래와 같습니다.
 
@@ -53,52 +52,35 @@ Presentation Layer 를 테스트하기 위해 우린 흔히 `@WebMvcTest` 를 �
 > 분명 `WebMvcConfigurer` 랑 `HandlerMethodArgumentResolver` 는 자동으로 등록해준다고 공식 문서에 명시되어 있는데, `HandlerInterceptor` 는 없네? 근데 따로 등록해주지 않아도 작동하네? 왜지?
 > 
 
-<br>
+### 찾아보자
 
-### 찾아보자.
+![Screen Shot 2022-07-14 at 3.41.37 PM.png](webmvctest-handlerinterceptor/Screen_Shot_2022-07-14_at_3.41.37_PM.png)
 
----
+이유를 열심히 찾다보니 spring-boot GitHub 에서 [이런 이슈](https://github.com/spring-projects/spring-boot/issues/17572)를 발견하게 됩니다.
 
-> *The `WebMvcTypeExcludeFilter` (for `@WebMvcTest` test slice) is missing the `org.springframework.web.servlet.HandlerInterceptor` interface from its default includes in my opinion.*
-> 
-> 
-> *Or should components implementing the interface be marked in a different way so that they are included in WebMvcTest slices?*
-> 
+해당 이슈는 [이 PR](https://github.com/spring-projects/spring-boot/pull/17600) 을 통해 수정되게 되는데요. [어떤 코드들이 추가](https://github.com/spring-projects/spring-boot/commit/9f69b61d493c29ff5026bbbee306d507d60a0eac)되었는지 확인해봅시다.
 
-이유를 열심히 찾다보니 spring-boot GitHub 에서 이런 [이슈](https://github.com/spring-projects/spring-boot/issues/17572)를 발견하게 됩니다.
-
-해당 이슈는 [위 PR](https://github.com/spring-projects/spring-boot/pull/17600) 을 통해 수정되게 되는데요. [어떤 코드들이 추가](https://github.com/spring-projects/spring-boot/commit/9f69b61d493c29ff5026bbbee306d507d60a0eac)되었는지 확인해봅시다.
-
-<div align="center">
-	<img src="webmvctest-handlerinterceptor/code-changes.png"/>
-</div>
+![Screen Shot 2022-07-12 at 5.01.07 PM.png](webmvctest-handlerinterceptor/Screen_Shot_2022-07-12_at_5.01.07_PM.png)
 
 위 커밋을 보면 `HandlerInterceptor` 가 추가된 것을 알 수 있습니다.
 
 이로써 `@WebMvcTest` 수행 시 `HandlerInterceptor` 가 자동으로 빈 등록된다는 것을 알 수 있습니다.
 
-<br>
-
 ### 그렇다면 왜 공식 문서에는 해당 내용이 반영되지 않은 것일까?
 
----
-
-<div align="center">
-	<img src="webmvctest-handlerinterceptor/official-docs.png"/>
-</div>
+![Screen Shot 2022-07-12 at 5.03.00 PM.png](webmvctest-handlerinterceptor/Screen_Shot_2022-07-12_at_5.03.00_PM.png)
 
 해당 공식문서는 spring-boot 1.4.0 버전에 작성된 글인 반면, 위 PR 은 2.2.0 단계에서 적용되었기 때문에 아직 공식 문서에 반영되지 않은 것으로 판단됩니다.
 
 확실하게 알고 넘어가기 위해 [Spring Boot 2.2.0 Release Notes](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.2.0-Release-Notes) 를 찾아봅시다.
 
-놀랍게도 아래와 같은 문장이 적혀있는 것을 확인하실 수 있습니다.
+![Screen Shot 2022-07-14 at 3.40.02 PM.png](webmvctest-handlerinterceptor/Screen_Shot_2022-07-14_at_3.40.02_PM.png)
 
-> *• `@WebMvcTest` now scans `HandlerInterceptor` beans.*
-> 
+놀랍게도 위와 같은 문장이 적혀있는 것을 확인하실 수 있습니다.
 
 <br>
 
-### 결론
+## 결론
 
 ---
 
