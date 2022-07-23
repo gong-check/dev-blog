@@ -4,10 +4,18 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import getInfoFromSlug from "../utils/getInfoFromSlug"
+import getTeamInfo from "../utils/getTeamInfo"
+import { StaticImage } from "gatsby-plugin-image"
 
 const BlogIndex = ({ data, location }) => {
+  const [tagSelector, setTagSelector] = React.useState("All")
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const TAG = ["All", "FE", "BE"]
+
+  const onClickTagButton = (e, tag) => {
+    setTagSelector(tag)
+  }
 
   if (posts.length === 0) {
     return (
@@ -23,10 +31,22 @@ const BlogIndex = ({ data, location }) => {
       <Seo title="GongCheck" />
       <div className="list-wrapper">
         <ol style={{ listStyle: `none` }}>
+          <div>
+            {TAG.map(tag => (
+              <button
+                onClick={e => onClickTagButton(e, tag)}
+                className={tag === tagSelector ? "tag-button-clicked" : ""}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
           {posts.map(post => {
             const postInfo = getInfoFromSlug(post.fields.slug)
             const title = post.frontmatter.title || postInfo.title
+            const { img, division } = getTeamInfo(postInfo.author)
 
+            if (tagSelector !== "All" && division !== tagSelector) return
             return (
               <li key={post.fields.slug}>
                 <article
@@ -49,7 +69,11 @@ const BlogIndex = ({ data, location }) => {
                       itemProp="description"
                     />
                   </section>
-                  <small>{post.frontmatter.date || "작성 날짜 없음"}</small>
+                  <footer>
+                    <img src={img}></img>
+                    <strong>{postInfo.author}</strong>
+                    <small>{post.frontmatter.date || "작성 날짜 없음"}</small>
+                  </footer>
                 </article>
               </li>
             )
