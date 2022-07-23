@@ -3,6 +3,11 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import ScrollUpButton from "./ScrollUpButton"
 import useScroll from "../hooks/useScroll"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Autoplay, Pagination, Navigation } from "swiper"
+
+import "swiper/css"
+import "swiper/css/pagination"
 
 const Layout = ({ location, title, children }) => {
   const { scrollPosition } = useScroll()
@@ -36,15 +41,23 @@ const Layout = ({ location, title, children }) => {
             />
           </Link>
         </h1>
-        <section className="main-section">
-          <div className="main-section-image-wrapper">
-            <StaticImage
-              className="main-cover"
-              src="../images/main-cover.png"
-              alt="Main cover picture"
-            />
-          </div>
-        </section>
+        <Swiper
+          className="home_slider"
+          spaceBetween={30}
+          centeredSlides={true}
+          modules={[Pagination, Autoplay, Navigation]}
+          slidesPerView={1}
+          loop={true}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+        >
+          <SwiperSlide>
+            <StaticImage src="../images/1.png" alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <StaticImage src="../images/2.png" alt="" />
+          </SwiperSlide>
+        </Swiper>
       </>
     )
   } else {
