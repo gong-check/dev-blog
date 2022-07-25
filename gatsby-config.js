@@ -16,7 +16,7 @@ module.exports = {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: `https://gong-check.github.io/dev-blog/`,
-        sitemap: `https://gong-check.github.io/dev-blog/sitemap.xml`,
+        sitemap: `https://gong-check.github.io/dev-blog/sitemap/sitemap-0.xml`,
         policy: [{ userAgent: `*`, allow: `/` }],
       },
     },
