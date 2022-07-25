@@ -1,2 +1,2 @@
 User-agent: *
-Disallow:
+Sitemap: https://gong-check.github.io/dev-blog/sitemap.xml
