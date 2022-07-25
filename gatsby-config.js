@@ -11,6 +11,15 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://gong-check.github.io/dev-blog/`,
+        sitemap: `https://gong-check.github.io/dev-blog/sitemap.xml`,
+        policy: [{ userAgent: `*`, allow: `/` }],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
