@@ -65,7 +65,7 @@ const Seo = ({ description, lang, meta, title }) => {
         },
         {
           name: `google-site-verification`,
-          content: `<meta name="google-site-verification" content="2boy4mTZFpjeW291aYEx-aeG_otrQP6s7X8GIm89jgw" />`,
+          content: `2boy4mTZFpjeW291aYEx-aeG_otrQP6s7X8GIm89jgw`,
         },
       ].concat(meta)}
     />
