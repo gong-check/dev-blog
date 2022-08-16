@@ -29,9 +29,10 @@ jobs:
           script: |
             const fs = require('fs');
             const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/index.json'));
-            let comments = "테스트";
-
+            let comments = `${result}`;
+            console.log(results)
             core.setOutput('comments', comments);
+
       - name: comment PR
         uses: unsplash/comment-on-pr@v1.3.0
         env:
