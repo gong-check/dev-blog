@@ -61,7 +61,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json",
+    "report:merge": "mochawesome-merge cypress/results/json/*.json > cypress.result.json",
     "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
   }
 }

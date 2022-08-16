@@ -19,8 +19,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Cypress run
         uses: cypress-io/github-action@v4
+
+      - name: Merge Results
+        run: npm run report:merge
+
       - name: Format Cypress Result
         id: format_cypress_result
         uses: actions/github-script@v3
@@ -28,7 +33,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
-            const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/index.json'));
+            const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/cypress.result.json'));
             let comments = "";
 
             const {passes, failures, pending, duration, passPercent, skipped} = results.stats;
