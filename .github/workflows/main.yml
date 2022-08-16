@@ -25,9 +25,9 @@ jobs:
         with:
           record: true
         env:
-          # overwrite commit message sent to Dashboard
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.API_KEY }}
           COMMIT_INFO_MESSAGE: ${{github.event.pull_request.title}}
-          # re-enable PR comment bot
           COMMIT_INFO_SHA: ${{github.event.pull_request.head.sha}}
 
       - name: Merge Results
