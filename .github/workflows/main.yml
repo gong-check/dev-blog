@@ -16,6 +16,7 @@ jobs:
         id: format_cypress_result
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/index.json'));
@@ -53,6 +54,6 @@ jobs:
       - name: comment PR
         uses: unsplash/comment-on-pr@v1.3.0
         env:
-          GITHUB_TOKEN: ${{ secrets.API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           msg: ${{ steps.format_cypress_result.outputs.comments}}
