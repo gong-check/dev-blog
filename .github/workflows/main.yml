@@ -31,7 +31,7 @@ jobs:
             const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/index.json'));
             let comments = "";
 
-            const {passes, failures, pending, duration, passPercent, skipped} = results.states
+            const {passes, failures, pending, duration, passPercent, skipped} = results.stats;
 
             const comment = [
               `Cypress E2E Test Result`,
@@ -39,7 +39,7 @@ jobs:
               `| ${passPercent === 100 ? 'Success😀' : 'Failed😂'} | ${passes} | ${failures} | ${pending} | ${skipped} | ${duration/1000}s |`,
             ].join("\n");
 
-            comments += comment
+            comments += comment;
 
             core.setOutput('comments', comments);
 
