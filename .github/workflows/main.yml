@@ -28,8 +28,35 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
-            const results = JSON.parse(fs.readFileSync('${{ github.workspace }}//index.json'));
-            let comments = "테스트";
+            const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/index.json'));
+            let comments = "";
+
+            const { summary, jsonPath } = results[0];
+
+            # const details = JSON.parse(fs.readFileSync(jsonPath));
+            # const { audits } = details;
+
+            # const formatResult = (res) => Math.round(res * 100);
+
+            # Object.keys(summary).forEach(
+            #   (key) => (summary[key] = formatResult(summary[key]))
+            # );
+
+            const comment = [
+              `⭐️ Cypress E2E Test Report`,
+              `| Test | ${summary.performance} |`,
+              `| Passing | ${summary.accessibility} |`,
+              `| Failing | ${summary[`best-practices`]} |`,
+              `| Pending | ${summary.seo} |`,
+              `| Skipped | ${summary.pwa} |`
+              `| Screenshots | ${summary.pwa} |`
+              `| Video | ${summary.pwa} |`
+              `| Duration | ${summary.pwa} |`
+              `| Spec Ran | ${summary.pwa} |`
+              `| Spec Ran | ${results} |`
+
+            ].join("\n");
+              
 
             core.setOutput('comments', comments);
       - name: comment PR
