@@ -4,15 +4,6 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: enriikke/gatsby-gh-pages-action@v2
-        with:
-          access-token: ${{ secrets.API_KEY }}
-          deploy-branch: gh-pages
-
   cypress-run:
     name: Cypress E2E Test CI
     runs-on: ubuntu-latest
@@ -25,7 +16,7 @@ jobs:
         id: format_cypress_result
         uses: actions/github-script@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.API_KEY }}
           script: |
             const fs = require('fs');
             const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/index.json'));
@@ -62,6 +53,6 @@ jobs:
       - name: comment PR
         uses: unsplash/comment-on-pr@v1.3.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.API_KEY }}
         with:
           msg: ${{ steps.format_cypress_result.outputs.comments}}
