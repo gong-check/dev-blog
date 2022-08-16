@@ -29,8 +29,18 @@ jobs:
           script: |
             const fs = require('fs');
             const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/index.json'));
-            let comments = `${results}`;
-            console.log(results)
+            let comments = "";
+
+            const {passes, failures, pending, duration, passPercent, skipped} = results.states
+
+            const comment = [
+              `Cypress E2E Test Result`,
+              `| Result | Passed✅ | Failed❌ | Pending✋ | Skipped↩️ | Duration🕐 |`,
+              `| ${passPercent === 100 ? 'Success😀' : 'Failed😂'} | ${passes} | ${failures} | ${pending} | ${skipped} | ${duration/1000}s |`,
+            ].join("\n");
+
+            comments += comment
+
             core.setOutput('comments', comments);
 
       - name: comment PR
