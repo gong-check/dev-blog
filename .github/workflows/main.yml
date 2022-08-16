@@ -4,6 +4,15 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.API_KEY }}
+          deploy-branch: gh-pages
+
   cypress-run:
     name: Cypress E2E Test CI
     runs-on: ubuntu-latest
@@ -14,41 +23,13 @@ jobs:
         uses: cypress-io/github-action@v4
       - name: Format Cypress Result
         id: format_cypress_result
-        uses: actions/github-script@v6
+        uses: actions/github-script@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const results = JSON.parse(fs.readFileSync('${{ github.workspace }}/index.json'));
-            let comments = "";
-
-            const { summary, jsonPath } = results[0];
-
-            # const details = JSON.parse(fs.readFileSync(jsonPath));
-            # const { audits } = details;
-
-            # const formatResult = (res) => Math.round(res * 100);
-
-            # Object.keys(summary).forEach(
-            #   (key) => (summary[key] = formatResult(summary[key]))
-            # );
-
-            const comment = [
-              `⭐️ Cypress E2E Test Report`,
-              `| Test | ${summary.performance} |`,
-              `| Passing | ${summary.accessibility} |`,
-              `| Failing | ${summary[`best-practices`]} |`,
-              `| Pending | ${summary.seo} |`,
-              `| Skipped | ${summary.pwa} |`
-              `| Screenshots | ${summary.pwa} |`
-              `| Video | ${summary.pwa} |`
-              `| Duration | ${summary.pwa} |`
-              `| Spec Ran | ${summary.pwa} |`
-              `| Spec Ran | ${results} |`
-
-            ].join("\n");
-              
-            console.log(results);
+            let comments = "테스트";
 
             core.setOutput('comments', comments);
       - name: comment PR
