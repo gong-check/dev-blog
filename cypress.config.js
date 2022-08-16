@@ -1,4 +1,4 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require("cypress")
 
 module.exports = defineConfig({
   e2e: {
@@ -6,4 +6,10 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
   },
-});
+  reporter: "cypress-multi-reporters",
+  reporterOptions: {
+    configFile: "reporter-config.json",
+  },
+  video: false,
+  screenshotOnRunFailure: false,
+})
