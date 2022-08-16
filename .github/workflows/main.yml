@@ -1,16 +1,23 @@
 on:
   push:
     branches:
-      - main
+      - test
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.API_KEY }}
           deploy-branch: gh-pages
+
+  cypress-run:
+    name: Cypress E2E Test CI
+    runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
