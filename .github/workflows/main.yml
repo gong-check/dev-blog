@@ -48,7 +48,7 @@ jobs:
 
             ].join("\n");
               
-            console.log(results)
+            console.log(results);
 
             core.setOutput('comments', comments);
       - name: comment PR
