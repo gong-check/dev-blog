@@ -6,13 +6,10 @@ tags: ["JPA", "N+1"]
 ---
 
 # JPA N+1 문제 찾아 삼만리
-
 안녕하세요 공책팀에서 백엔드 개발을 맡고 있는 범고래입니다.
-
 이번에 프로젝트에 JPA를 사용하면서 N+1 문제가 발생하는 곳을 찾고, 해결하는 시간을 가졌는데요.
 
 ## N+1 문제란?
-
 ```
 💡 N + 1문제란 1번의 쿼리를 실행했을 때 의도치 않게 N번의 쿼리가 추가적으로 실행되는 것을 말합니다.
 예를 들어, 하나의 엔티티를 조회했을 때 그것과 연관된 다른 엔티티를 다시 조회하여 비효율이 발생하는 상황 등이 있습니다. 여러 번의 쿼리를 날리는 것이 아니라, 한번 조회할 때 한 번에 조회하는 것이 더 효율적일텐데 말이죠.
@@ -34,9 +31,7 @@ tags: ["JPA", "N+1"]
 이를 해결하기 위해서, 인수 테스트 전체를 실행하면 api 호출 마다 몇 개의 쿼리가 나가는지, n+1이 의심이 가지는 않는지 등을 한 눈에 볼 수 있게 파일로 추출해주는 라이브러리가 있으면 어떨까라는 생각을 하게 됐습니다.
 
 ## 라이브러리 구현 설계
-
-### **StatementInspector 인터페이스 활용**
-
+### StatementInspector 인터페이스 활용
 ![img.png](../../범고래/N+1/img_1.png)
 
 ```
@@ -50,7 +45,6 @@ tags: ["JPA", "N+1"]
 이미지 출처: [https://vladmihalcea.com/hibernate-statementinspector/](https://vladmihalcea.com/hibernate-statementinspector/)
 
 ### 문제 정의
-
 💡 위 설명을 보고 간단하게 Interceptor와 StatementInspector를 활용하면 될 것 같은데요.
 먼저 어떤 문제를 해결할 것인지를 정의해 보았습니다.
 
@@ -64,15 +58,11 @@ tags: ["JPA", "N+1"]
 
 
 ## 라이브러리 구성
-
 생각보다 구현 로직이 간단해서 빠르게 진행해 봤는데요.
-
 핵심 로직을 수행하는 `JpaInspector`, `QueryCountInterceptor` 가 어떤 역할을 하는지 간단하게만 언급하고 자세한 내용이 궁금하시다면 [실제 코드](https://github.com/sogorae/jpa-query-counter)를 봐도 좋을 것 같습니다.
 
 ### JpaInspector로 SQL 가져오기
-
 ![img2.png](../../범고래/N+1/img_2.png)
-
 ![img3.png](../../범고래/N+1/img_3.png)
 
 
@@ -84,7 +74,6 @@ inspect를 Override 하면 실행될 sql문을 가로챌 수 있는데요.
 ```
 
 ## QueryCountInterceptor로 JpaInspector관리하고 필요한 정보 파일로 추출하기
-
 ![img4.png](../../범고래/N+1/img_4.png)
 
 ```
@@ -95,7 +84,7 @@ inspect를 Override 하면 실행될 sql문을 가로챌 수 있는데요.
 위와 같이 크게 `JpaInspector`, `QueryCountInterceptor` 등으로 구성된 프로젝트를 jitpack을 사용해 라이브러리로 배포했습니다.
 ```
 
-## 사용법(https://github.com/sogorae/jpa-query-counter)
+## 사용법
 
 ```
 repositories{
@@ -108,22 +97,22 @@ dependencies {
 	implementation 'com.github.sogorae:jpa-query-counter:1.0.4'
 }
 ```
-
 위와 같이 build.gradle에 **`maven{url 'https://jitpack.io'}`, `implementation 'com.github.sogorae:jpa-query-counter:1.0.4'`** 를 추가한 후, e2e 테스트(ex. 인수 테스트)를 실행하면 원하는 정보가 파일로 추출됩니다.
+[라이브러리 링크](https://github.com/sogorae/jpa-query-counter)
+
 
 ## 실행 결과
 
 ![img5.png](../../범고래/N+1/img_5.png)
-
 위와 같이 실행된 쿼리 정보 파일을 보고 한 눈에 파악할 수 있게 되었습니다.
 
 ## N+1 및 잘못된 쿼리 수정 결과
 
 ![img.png](../../범고래/N+1/img_6.png)
-
 여기까지 어떻게 N+1 문제를 찾았는지에 대한 내용을 다뤄보았는데요.
 
 다음 글에는 공책 팀에서 n+1 문제, 예상치 못하게 발생한 잘못된 쿼리가 무엇이고 어떻게 해결했는지에 대해 다뤄보겠습니다.
 
-**참고:** [https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/resource/jdbc/spi/StatementInspector.html](https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/resource/jdbc/spi/StatementInspector.html)
-[https://vladmihalcea.com/hibernate-statementinspector/](https://vladmihalcea.com/hibernate-statementinspector/), [http://knes1.github.io/blog/2015/2015-07-08-counting-queries-per-request-with-hibernate-and-spring.html](http://knes1.github.io/blog/2015/2015-07-08-counting-queries-per-request-with-hibernate-and-spring.html)
+**참고:** 
+- [https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/resource/jdbc/spi/StatementInspector.html](https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/resource/jdbc/spi/StatementInspector.html)
+- [https://vladmihalcea.com/hibernate-statementinspector/](https://vladmihalcea.com/hibernate-statementinspector/), [http://knes1.github.io/blog/2015/2015-07-08-counting-queries-per-request-with-hibernate-and-spring.html](http://knes1.github.io/blog/2015/2015-07-08-counting-queries-per-request-with-hibernate-and-spring.html)
