@@ -12,8 +12,6 @@ tags: ["spring", "SSE"]
 
 <img src="image/checklist.gif" width="630"/>
 
-![체크리스트 사용 화면 기록](image/checklist.gif)
-
 내가 보낸 요청(체크리스트 상태 변경)이 아니라도 현재 체크리스트의 상태 데이터를 서버로부터 전달받아야 합니다.
 
 전통적인 Client-Server 모델의 HTTP 통신에서는 이런 기능을 구현하기가 조금 난감합니다. 클라이언트의 요청이 있어야만 서버가 응답을 할 수 있기 때문이죠.
