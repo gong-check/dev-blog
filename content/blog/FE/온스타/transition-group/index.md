@@ -1,5 +1,5 @@
 ---
-date: 2022-10-6T12:10
+date: 2022-10-10T23:10
 title: React Transition Group 도입기
 description: 프로젝트에 React Transition Group 적용한 이유와 그 과정에 대한 회고와 내용 정리
 tags: ["react", "fe", "transition"]
