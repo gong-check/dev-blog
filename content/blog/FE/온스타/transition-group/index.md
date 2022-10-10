@@ -1,5 +1,5 @@
 ---
-date: 2022-10-10T23:10
+date: 2022-10-10
 title: React Transition Group 도입기
 description: 프로젝트에 React Transition Group 적용한 이유와 그 과정에 대한 회고와 내용 정리
 tags: ["react", "fe", "transition"]
@@ -20,7 +20,7 @@ GongCheck 팀에서 프론트엔드 개발을 맡고 있는 온스타입니다.<
 
 현재 GongCheck 프로젝트에 적용되어있는 페이지 전환 애니메이션입니다.
 
-<img src="image/first.webp" width="280"/>
+<img src="image/first.gif" width="280"/>
 
 GongCheck 프로젝트는 위의 영상에서 보이는 공간 사용자를 위한 사이트와, 또 다른 공간 관리자를 위한 사이트가 분리되어있습니다.
 
