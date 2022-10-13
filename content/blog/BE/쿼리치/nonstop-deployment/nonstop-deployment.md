@@ -42,7 +42,7 @@ tags: ["backend", "Jenkins"]
 
 ---
 
-![Untitled](nonstop-deployment/Untitled%201.png)
+![Untitled_1](nonstop-deployment/Untitled_1.png)
 
 운영 환경에서 구 버전과 동일하게 신 버전을 배포하고 일제히 전환하여 모든 트래픽을 신 버전으로 전환하는 전략이다. 블루 그린 전략은 물리적인 서버를 대상으로 사용하기에는 비용상 버겁다. 그래서 클라우드 환경에서
 쉽게 인스턴스를 생성하거나 없앨 수 있는 AWS 나 Docker 와 같은 가상 환경에서 사용하는 것이 효과적이다.
@@ -58,7 +58,7 @@ tags: ["backend", "Jenkins"]
 
 ---
 
-![Untitled](nonstop-deployment/Untitled%202.png)
+![Untitled_2](nonstop-deployment/Untitled_2.png)
 
 `카나리아` 라는 새는 유독가스에 굉장히 민감한 동물이다. 과거 광부들은 유독가스에 민감한 카나리아 새를 유독가스 누출의 위험을 감지하는 용도로 사용하였다.
 
