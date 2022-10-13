@@ -212,18 +212,19 @@ pipeline {
 												'''
 
                         sshPublisher(publishers: [sshPublisherDesc(configName: 'gongcheck-reverse-proxy-dev', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''#!/bin/bash
-		                        function parse_was_address() {
-		                            array=(''' + green_ips_inline + ''')
-		                            str=""
-		                        	  for i in "${array[@]}"
-		                                do
-		                        	          str+="set \$service_url http://${i}:8080;\n"
-		                                done
-		                            echo -e "$str"
-		                        }
-		                        echo -e "$(parse_was_address)" | sudo tee /etc/nginx/conf.d/service-url.inc
-		                        sudo service nginx reload
-		                        ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                            function parse_was_address() {
+                                array=(''' + green_ips_inline + ''')
+                                str=""
+                                  for i in "${array[@]}"
+                                    do
+                                          str+='set $service_url '
+                                        str+="http://${i}:8080;\n"
+                                    done
+                                echo -e "$str"
+                            }
+                            echo -e "$(parse_was_address)" | sudo tee /etc/nginx/conf.d/service-url.inc
+                            sudo service nginx restart
+                            ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 
                         for (item in blue_ips) {
                             sshPublisher(publishers: [sshPublisherDesc(configName: map.get(item), transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'sh /home/ubuntu/script/kill.sh', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/deploy', remoteDirectorySDF: false, removePrefix: 'build/libs', sourceFiles: 'build/libs/*.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
@@ -467,14 +468,15 @@ sshPublisher(publishers: [sshPublisherDesc(configName: 'gongcheck-reverse-proxy-
     function parse_was_address() {
         array=(''' + green_ips_inline + ''')
         str=""
-    	  for i in "${array[@]}"
+          for i in "${array[@]}"
             do
-    	          str+="set \$service_url http://${i}:8080;\n"
+                str+='set $service_url '
+                str+="http://${i}:8080;\n"
             done
         echo -e "$str"
     }
     echo -e "$(parse_was_address)" | sudo tee /etc/nginx/conf.d/service-url.inc
-    sudo service nginx reload
+    sudo service nginx restart
     ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 ```
 
