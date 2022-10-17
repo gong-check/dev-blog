@@ -62,7 +62,7 @@ GongCheck 팀에서 프론트엔드 개발을 맡고 있는 코카콜라입니�
 프론트에서는 리소스는 서버로부터 전달받아야 하는데요. 저희 공책팀의 백엔드에서는 이미지 서버를 구축하여 최적화를 진행했습니다.
 백엔드 오리의 이미지 서버 글을 보시면 자세한 내용을 확인 하실 수 있습니다.
 
-[백엔드 오리 - 이미지 서버]([https://tecoble.techcourse.co.kr/post/2022-09-13-image-storage-server/](https://tecoble.techcourse.co.kr/post/2022-09-13-image-storage-server/))
+[백엔드 오리 - 이미지 서버](https://tecoble.techcourse.co.kr/post/2022-09-13-image-storage-server/)
 
 ## 1-4. 다른 서비스에서는 이미지를 어떻게 보여주고 있을까?
 
@@ -131,7 +131,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ imageUrl, ...props }) => {
 
 # 4. 참고
 
-- [picture mdn]([https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture))
-- [optimize LCP]([https://web.dev/i18n/ko/optimize-lcp/](https://web.dev/i18n/ko/optimize-lcp/))
-- [Lazy Loading]([https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading))
-- [IntersectionObserver]([https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver))
+- [picture mdn](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)
+- [optimize LCP](https://web.dev/i18n/ko/optimize-lcp/)
+- [Lazy Loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)
+- [IntersectionObserver](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
