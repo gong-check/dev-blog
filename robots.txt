@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://gong-check.github.io/dev-blog/sitemap/sitemap-0.xml
+Host: https://gong-check.github.io
